@@ -42,7 +42,7 @@ python dump_vec_faiss api
 ```
 
 ### 4.2 使用本地模型建立向量数据库
-首次运行，需要从 HuggingFace 上下载我们的模型 [checkpoint](https://huggingface.co/DMetaSoul/Dmeta-embedding-zh
+首次运行，需要从 HuggingFace 上下载我们的模型 [checkpoint](https://huggingface.co/DMetaSoul/Dmeta-embedding-zh)
 ```shell
 python dump_vec_fass local
 ```
