@@ -20,3 +20,10 @@
 <div align="center">
 <img src="./docs/api_qrcode.jpeg" alt="icon"/>
 </div>
+
+如您有其它商业需求，包括不限于以下几种，也欢迎联系我们（<aigc@dmetasoul.com>）：
+
+- 特定领域数据 Embedding 微调训练
+- 私有化 Embedding 服务的部署
+- 私有、专门知识库的索引和检索
+- Embedding + RAG LLM 大模型技术落地
