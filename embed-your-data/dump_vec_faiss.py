@@ -4,7 +4,7 @@ import pickle
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores.faiss import FAISS
 from langchain_community.document_loaders import UnstructuredFileLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings, OllamaEmbeddings
 from dmeta import DMetaTextEmbeddings
 from dotenv import load_dotenv
 
@@ -15,6 +15,7 @@ index_path = "./vectorstore_douban_movie-1k.pkl"
 hf_model_path = "DMetaSoul/Dmeta-embedding-zh"
 api_mode_name = "DMetaSoul/Dmeta-embedding"
 model_kwargs = {'device': 'cuda'}
+ollama_model_name = "shaw/dmeta-embedding-zh"
 
 ## Load Data
 loader = UnstructuredFileLoader(data_path)
@@ -37,6 +38,13 @@ mode = sys.argv[1]
 ## Load data to vectorstore
 if mode == "local":
     emb_model = HuggingFaceEmbeddings(model_name=hf_model_path, model_kwargs=model_kwargs)
+    vectorstore = FAISS.from_documents(documents, emb_model)
+elif mode == "ollama":
+    if len(sys.argv) > 2:
+        ollama_url = sys.argv[2]
+        emb_model = OllamaEmbeddings(model=ollama_model_name, base_url=ollama_url)
+    else:
+        emb_model = OllamaEmbeddings(model=ollama_model_name)
     vectorstore = FAISS.from_documents(documents, emb_model)
 else:
     emb_model = DMetaTextEmbeddings(model_name=api_mode_name)

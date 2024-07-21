@@ -44,7 +44,17 @@ python dump_vec_faiss api
 ### 4.2 使用本地模型建立向量数据库
 首次运行，需要从 HuggingFace 上下载我们的模型 [checkpoint](https://huggingface.co/DMetaSoul/Dmeta-embedding-zh)
 ```shell
-python dump_vec_fass local
+python dump_vec_faiss local
+```
+
+### 4.3 使用Ollama部署模型建立向量数据库
+首次运行，请参考[Ollama部署指引](../Ollama/README.md)
+```shell
+python dump_vec_faiss ollama http://192.168.0.100:11434
+```
+注意，此处的url需要根据实际情况修改，若使用本机Ollama也可忽略url
+```shell
+python dump_vec_faiss ollama
 ```
 
 ## 5. 验证 Faiss 索引
